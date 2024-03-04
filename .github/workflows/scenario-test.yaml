@@ -44,7 +44,8 @@ jobs:
         env:
           BTP_USERNAME: ${{ secrets.BTP_USERNAME }}
         run: |
-          echo $BTP_USERNAME
+          echo "BTP_USERNAME is $BTP_USERNAME"
+          echo "BTP_PASSWORD is masked"
       - name: Terraform apply
         id: terraform_apply
         shell: bash
