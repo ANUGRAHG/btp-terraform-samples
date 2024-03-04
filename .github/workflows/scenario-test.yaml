@@ -50,7 +50,7 @@ jobs:
           if [ ${{ matrix.usecase.use_custom_idp }} = true ]
           echo $BTP_USERNAME
           then 
-            terraform -chdir=${{ matrix.usecase.folder }} apply -var-file='${{ matrix.usecase.var_file }}' -var btp_user='BTP_USERNAME' -var btp_password='BTP_PASSWORD'  -auto-approve -no-color 
+            terraform -chdir=${{ matrix.usecase.folder }} apply -var-file='${{ matrix.usecase.var_file }}' -var btp_user='BTP_USERNAME' -auto-approve -no-color 
           else 
             terraform -chdir=${{ matrix.usecase.folder }} apply -var-file='${{ matrix.usecase.var_file }}'  -auto-approve -no-color 
           fi
