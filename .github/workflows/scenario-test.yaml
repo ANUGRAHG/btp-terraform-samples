@@ -42,18 +42,14 @@ jobs:
       - name: Terraform apply
         id: terraform_apply
         shell: bash
-        env:
-          BTP_USERNAME: ${{ secrets.BTP_USERNAME }}
-          BTP_PASSWORD: ${{ secrets.BTP_PASSWORD }}
-          CF_USER: ${{ secrets.BTP_USERNAME }}
-          CF_PASSWORD: ${{ secrets.BTP_PASSWORD }}
         run: |
           if [ "${{ matrix.usecase.use_custom_idp }}" = "true" ]
           then 
-            terraform -chdir=${{ matrix.usecase.folder }} apply -var-file="${{ matrix.usecase.var_file }}" -var "btp_user=${BTP_USERNAME}" -var "btp_pass=${BTP_PASSWORD}" -auto-approve -no-color 
+            echo $BTP_USERNAME
+           # else.folder }} apply -var-file="${{ matrix.usecase.var_file }}" -var "btp_user=${BTP_USERNAME}" -var "btp_pass=${BTP_PASSWORD}" -auto-approve -no-color 
           else 
             echo $BTP_USERNAME
-            terraform -chdir=${{ matrix.usecase.folder }} apply -var-file="${{ matrix.usecase.var_file }}"  -auto-approve -no-color 
+            # terraform -chdir=${{ matrix.usecase.folder }} apply -var-file="${{ matrix.usecase.var_file }}"  -auto-approve -no-color 
           fi
 
       - name: Terraform destroy
