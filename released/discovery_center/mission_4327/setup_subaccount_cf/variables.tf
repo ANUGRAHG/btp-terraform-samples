@@ -152,6 +152,7 @@ variable "entitlements" {
 variable "btp_user" {
 description = "BTP user email"
 type = string
+default = "DL_65DDA8EBA97EAA0134EEB5DC@global.corp.sap"
 }
 
 # Plan_name update
