@@ -4,7 +4,7 @@
 # Your global account subdomain
 globalaccount        = "terraformdemocanary"
 region               = "eu12"
-subaccount_name      = "test-gh"
+subaccount_name      = "testgh"
 #------------------------------------------------------------------------------------------------------
 # Entitlements plan update
 #------------------------------------------------------------------------------------------------------
