@@ -39,6 +39,12 @@ jobs:
         shell: bash
         run: |
           terraform -chdir=${{ matrix.usecase.folder }} init -no-color
+      - name: Print BTP_USERNAME
+        shell: bash
+        env:
+          BTP_USERNAME: ${{ secrets.BTP_USERNAME }}
+        run: |
+          echo $BTP_USERNAME
       - name: Terraform apply
         id: terraform_apply
         shell: bash
