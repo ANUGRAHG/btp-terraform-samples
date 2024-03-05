@@ -39,7 +39,7 @@ variable "subaccount_service_admins" {
 variable "btp_user" {
 description = "BTP user email"
 type = string
-default = "DL_65DDA8EBA97EAA0134EEB5DC@global.corp.sap"
+default = "prajin.ollekkatt.prakasan@sap.comn"
 }
 
 # Plan_name update
