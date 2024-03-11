@@ -20,10 +20,10 @@ jobs:
       fail-fast: false
       matrix:
         usecase:
-           - name: 'DC mission 4327'
-             folder: 'released/discovery_center/mission_4327/setup_subaccount_cf'
-             var_file: 'terraform.tfvars'
-             use_custom_idp: false    
+          - name: 'DC mission 4327'
+            folder: 'released/discovery_center/mission_4327/setup_subaccount_cf'
+            var_file: 'terraform.tfvars'
+            use_custom_idp: false    
     steps:
       - name: Check out Git repository
         id: checkout_repo
