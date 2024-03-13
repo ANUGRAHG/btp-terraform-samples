@@ -17,19 +17,6 @@ variable "region" {
   description = "The region where the project account shall be created in."
   default     = "us10"
 }
-# Cloudfoundry environment label
-variable "cf_environment_label" {
-  type        = string
-  description = "The Cloudfoundry environment label"
-  default     = "cf-us10"
-}
-
-# Cloudfoundry space name
-variable "cf_space_name" {
-  type        = string
-  description = "The Cloudfoundry space name"
-  default     = "dev"
-}
 
 # CLI server
 variable "cli_server_url" {
@@ -100,10 +87,6 @@ variable "entitlements" {
       type         = "service"
     }
   ]
-}
-variable "btp_user" {
-description = "BTP user email"
-type = string
 }
 
 # Plan_name update
