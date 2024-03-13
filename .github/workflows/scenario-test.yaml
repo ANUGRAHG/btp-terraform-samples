@@ -122,5 +122,21 @@ jobs:
           else 
             terraform -chdir=${{ matrix.usecase.folder }} apply -var-file="${{ matrix.usecase.var_file }}"  -auto-approve -no-color 
           fi
+
+      - name: Terraform destroy for local provider
+        id: terraform_destroy_against_local_provider
+        shell: bash
+        run: |
+          export BTP_USERNAME=${{ secrets.BTP_USERNAME }}
+          export BTP_PASSWORD=${{ secrets.BTP_PASSWORD }}
+          export CF_USER=${{ secrets.BTP_USERNAME }}
+          export CF_PASSWORD=${{ secrets.BTP_PASSWORD }}
+          echo $BTP_USERNAME
+          if [ ${{ matrix.usecase.use_custom_idp }} = true ]
+          then 
+            terraform -chdir=${{ matrix.usecase.folder }} destroy -var-file='${{ matrix.usecase.var_file }}'  -auto-approve -no-color 
+          else 
+            terraform -chdir=${{ matrix.usecase.folder }} destroy -var-file='${{ matrix.usecase.var_file }}'  -auto-approve -no-color 
+          fi
           
    
