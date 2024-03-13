@@ -79,4 +79,10 @@ jobs:
           else 
             terraform -chdir=${{ matrix.usecase.folder }} destroy -var-file='${{ matrix.usecase.var_file }}'  -auto-approve -no-color 
           fi
+      - name: Check out provider repository
+        id: checkout_provider_repo
+        uses: actions/checkout@v4
+        with:
+          repository: SAP/terraform-provider-btp
+          
    
