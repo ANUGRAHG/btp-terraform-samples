@@ -85,6 +85,11 @@ jobs:
         with:
           repository: SAP/terraform-provider-btp
 
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+
       - name: Install local Terraform provider
         id: build_provider
         shell: bash
