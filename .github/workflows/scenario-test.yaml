@@ -102,5 +102,25 @@ jobs:
         shell: bash
         run: |
           rm -rf .terraform && rm -rf .terraform.lock.hcl && cp ${{ env.DEV_OVERRIDE }} ~/.terraformrc
+
+      - name: Check out Github repository
+        id: checkout_github_repo
+        uses: actions/checkout@v4
+
+      - name: Terraform apply for local provider
+        id: terraform_apply_against_local_provider
+        shell: bash
+        run: |
+          export BTP_USERNAME=${{ secrets.BTP_USERNAME }}
+          export BTP_PASSWORD=${{ secrets.BTP_PASSWORD }}
+          export CF_USER=${{ secrets.BTP_USERNAME }}
+          export CF_PASSWORD=${{ secrets.BTP_PASSWORD }}
+          echo "BTP_USERNAME is $BTP_USERNAME"
+          if [ "${{ matrix.usecase.use_custom_idp }}" = "true" ]
+          then 
+           else.folder }} apply -var-file="${{ matrix.usecase.var_file }}" -var "btp_user=${BTP_USERNAME}" -var "btp_pass=${BTP_PASSWORD}" -auto-approve -no-color 
+          else 
+            terraform -chdir=${{ matrix.usecase.folder }} apply -var-file="${{ matrix.usecase.var_file }}"  -auto-approve -no-color 
+          fi
           
    
