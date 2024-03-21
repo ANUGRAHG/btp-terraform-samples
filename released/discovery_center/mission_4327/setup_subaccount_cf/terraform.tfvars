@@ -2,8 +2,8 @@
 # Provider configuration
 # ------------------------------------------------------------------------------------------------------
 # Your global account subdomain
-globalaccount        = "terraformdemocanary"
-region               = "eu12"
+globalaccount        = "btp-terraformers-prod"
+region               = "eu10"
 subaccount_name      = "testgh"
 
 #------------------------------------------------------------------------------------------------------
