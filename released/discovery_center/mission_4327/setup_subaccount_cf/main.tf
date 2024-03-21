@@ -32,7 +32,7 @@ resource "btp_subaccount_role_collection_assignment" "subaccount-admins" {
 resource "btp_subaccount_environment_instance" "cloudfoundry" {
   subaccount_id    = btp_subaccount.project.id
   name             = "my-cf-environment"
-  landscape_label  = "cf-eu10"
+  landscape_label  = "cf-eu12"
   environment_type = "cloudfoundry"
   service_name     = "cloudfoundry"
   plan_name        = "standard"
