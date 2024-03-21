@@ -107,6 +107,12 @@ jobs:
         id: checkout_github_repo
         uses: actions/checkout@v4
 
+      - name: Terraform Init
+        id: init_terraform
+        shell: bash
+        run: |
+          terraform -chdir=${{ matrix.usecase.folder }} init -no-color
+
       - name: Terraform apply for local provider
         id: terraform_apply_against_local_provider
         shell: bash
