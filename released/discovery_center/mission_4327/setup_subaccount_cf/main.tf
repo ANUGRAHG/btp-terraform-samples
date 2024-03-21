@@ -84,3 +84,49 @@ resource "btp_subaccount_role_collection_assignment" "Business_Application_Studi
   user_name            = data.btp_whoami.me.email
   depends_on           = [btp_subaccount_subscription.bas-subscribe]
 }
+
+######################################################################
+# Add Build Workzone entitlement subscription and role Assignment
+######################################################################
+resource "btp_subaccount_entitlement" "build_workzone" {
+  subaccount_id = btp_subaccount.project.id
+  service_name  = "SAPLaunchpad"
+  plan_name     = var.build_workzone_plan_name
+}
+resource "btp_subaccount_subscription" "build_workzone_subscribe" {
+  subaccount_id = btp_subaccount.project.id
+  app_name      = "SAPLaunchpad"
+  plan_name     = var.build_workzone_plan_name
+  depends_on    = [btp_subaccount_entitlement.build_workzone]
+}
+resource "btp_subaccount_role_collection_assignment" "launchpad_admin" {
+  subaccount_id        = btp_subaccount.project.id
+  role_collection_name = "Launchpad_Admin"
+  user_name            = data.btp_whoami.me.email
+  depends_on           = [btp_subaccount_subscription.build_workzone_subscribe]
+}
+######################################################################
+# Create HANA entitlement subscription
+######################################################################
+resource "btp_subaccount_entitlement" "hana-cloud" {
+  subaccount_id    = btp_subaccount.project.id
+  service_name     = "hana-cloud"
+  plan_name        = var.hana-cloud_plan_name
+}
+# Enable HANA Cloud Tools
+resource "btp_subaccount_entitlement" "hana-cloud-tools" {
+  subaccount_id    = btp_subaccount.project.id
+  service_name     = "hana-cloud-tools"
+  plan_name        = "tools"
+}
+resource "btp_subaccount_subscription" "hana-cloud-tools" {
+  subaccount_id    = btp_subaccount.project.id
+  app_name         = "hana-cloud-tools"
+  plan_name        = "tools"
+  depends_on       = [btp_subaccount_entitlement.hana-cloud-tools]
+}
+resource "btp_subaccount_entitlement" "hana-hdi-shared" {
+  subaccount_id    = btp_subaccount.project.id
+  service_name     = "hana"
+  plan_name        = "hdi-shared"
+}
