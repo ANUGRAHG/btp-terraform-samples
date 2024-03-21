@@ -14,6 +14,9 @@ resource "btp_subaccount" "project" {
   subdomain = local.project_subaccount_domain
   region    = lower(var.region)
 }
+
+data "btp_whoami" "me" {}
+
 ###############################################################################################
 # Assignment of users as sub account administrators
 ###############################################################################################
