@@ -13,7 +13,7 @@ subaccount_name      = "testgh"
 bas_plan_name = "standard-edition"
 #-------------------------------------------------------------------------------------------------------
 #For production use of Build Workzone, upgrade the plan from the `free-tier` to the appropriate plan e.g standard
-build_workzone_plan_name = "free"
+build_workzone_plan_name = "standard"
 #--------------------------------------------------------------------------------------------------------
 # For production use of HANA, upgrade the plan from the `free-tier` to the appropriate plan e.g hana
 hana-cloud_plan_name = "hana"
